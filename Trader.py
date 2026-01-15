@@ -13,7 +13,7 @@ class Trader:
         self.orders = [i._asdict() for i in mt5.orders_get()]                               # gets open orders
         self.h_orders = [i._asdict() for i in mt5.history_orders_get(0, datetime.now())]    # gets orders history
         self.h_deals = [i._asdict() for i in mt5.history_deals_get(0, datetime.now())]      # gets deals history
-        print('Lock "n" loaded. Ready to RUMBLE.')
+        print('Ready to trade.')
 
         self.tf_dict = {                         # timeframe dict
                 'M1': [mt5.TIMEFRAME_M1, 60],
@@ -161,11 +161,11 @@ class Trader:
 
 
 
-
+# quick test
 if __name__ == '__main__':
     self = Trader()
 
-    symbol = 'BTCUSD'
+    symbol = 'ETHUSD'
     tf = 'M30'
     volume = 1
     start_date = datetime(2025, 1, 30)
@@ -176,7 +176,7 @@ if __name__ == '__main__':
 
 
     #data_range = self.get_ohlc_range(symbol, tf, start_date, end_date)
-    #data_pos = self.get_ohlc_pos(symbol, tf, initial_pos= 100, number_bars= 1000)
+    data_pos = self.get_ohlc_pos(symbol, tf, initial_pos= 100, number_bars= 1000)
 
     #self.send_market(symbol, side, volume)
     #self.send_limit(symbol, side, price, volume)
